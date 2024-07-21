@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Modal from 'react-modal';
-import { useNavigate } from 'react-router-dom';
 
 Modal.setAppElement('#root'); // Set the root element for accessibility
 
-export const Update = ({ isOpen, onClose, bookInfo }) => {
+export const Update = ({ isOpen, onClose, bookInfo, onBookUpdated }) => {
   const [book, setBook] = useState({
     title: '',
     desc: '',
@@ -13,7 +12,6 @@ export const Update = ({ isOpen, onClose, bookInfo }) => {
   });
 
   const [error, setError] = useState(false);
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (bookInfo) {
@@ -31,9 +29,8 @@ export const Update = ({ isOpen, onClose, bookInfo }) => {
   const handleClick = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.put(`http://localhost:8000/books/${book.id}`, book);
-      console.log(response);
-      navigate('/');
+      await axios.put(`http://localhost:8000/books/${book.id}`, book);
+      onBookUpdated(); // Call the callback function
       onClose();
     } catch (error) {
       console.log(error);

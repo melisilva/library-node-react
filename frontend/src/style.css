@@ -1,5 +1,4 @@
 .App{
-    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -7,69 +6,135 @@
     padding: 0px 100px;
 }
 
-.books{
+.books {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-}
-
-.book{
-    flex:1;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
-}
-
-img{
-    width: 200px;
-    height: 300px;
-    object-fit: cover;
-    background-color: violet;
-}
-
-.delete{
-    border: none;
-    padding: 3px 6px;
-    background-color: white;
-    cursor: pointer;
-    border: 1px solid red;
-    color: red;
-}
-
-.update{
-    border: none;
-    padding: 3px 6px;
-    background-color: white;
-    cursor: pointer;
-    border: 1px solid green;
-    color: green;
-}
-
-.form {
-    display: flex;
-    flex-direction: column;
     gap: 20px;
-
-    input {
-      width: 250px;
-      padding: 10px;
-      border: 1px solid gray;
-    }
-
-    textarea {
-      padding: 10px;
-    }
-
-    button {
-      border: none;
-      padding: 10px;
-      background-color: white;
-      background-color: teal;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-    }
+    margin-bottom: 20px;
+  }
+  
+  .book {
+    background: #f4f4f4;
+    padding: 20px;
+    border-radius: 8px;
+    width: calc(33.333% - 20px);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .book img {
+    max-width: 100%;
+    border-radius: 8px;
+  }
+  
+  .book h2 {
+    font-size: 20px;
+    margin: 10px 0;
+  }
+  
+  .book p {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .book-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .book-buttons button {
+    flex: 1;
+    margin: 0 5px;
+  }
+  
+  .book-buttons button:first-child {
+    margin-left: 0;
+  }
+  
+  .book-buttons button:last-child {
+    margin-right: 0;
+  }
+  
+  .add-book-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  .add-book-button:hover {
+    background-color: #0056b3;
+  }
+  .form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .form h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .form input,
+  .form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+  
+  .form textarea {
+    resize: vertical;
+  }
+  
+  .form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .form button:hover {
+    background-color: #0056b3;
+  }
+  
+  .form p {
+    color: red;
+    margin-top: 10px;
+  }
+  
+  .form a {
+    margin-top: 20px;
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .form a:hover {
+    text-decoration: underline;
   }
   

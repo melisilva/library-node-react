@@ -1,73 +1,70 @@
-import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
 import axios from 'axios';
+import Modal from 'react-modal';
 
+Modal.setAppElement('#root'); // Set the root element for accessibility
 
-export const Add = () => {
-    const [book, setBook] = useState({
-        title: '',
-        desc: '',
-        cover: ''
+export const Add = ({ isOpen, onClose, onBookAdded }) => {
+  const [book, setBook] = useState({
+    title: '',
+    desc: '',
+    cover: ''
+  });
+
+  const [error, setError] = useState(false);
+
+  const handleChange = (e) => {
+    setBook({
+      ...book,
+      [e.target.name]: e.target.value
     });
+  };
 
-    const [error, setError] = useState(false);
-
-    const navigate = useNavigate();
-
-    const handleChange = (e) => {
-        setBook({
-            ...book,
-            [e.target.name]: e.target.value
-        });
+  const handleClick = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post('http://localhost:8000/books', book);
+      onBookAdded(); // Call the callback function
+      onClose();
+    } catch (error) {
+      console.log(error);
+      setError(true);
     }
-
-    const handleClick = async e => {
-        e.preventDefault();
-        try {
-            const response = await axios.post('http://localhost:8000/books', book);
-            // can also be done with:
-            //const response = await fetch('http://localhost:8000/books', {
-            //    method: 'POST',
-            //    headers: {
-            //        'Content-Type': 'application/json'
-            //    },
-            //    body: JSON.stringify(book)
-            //});
-            console.log(response);
-            navigate('/');
-        } catch (error) {
-            console.log(error);
-            setError(true);
-        }
-    }
-
-    console.log(book);
+  };
 
   return (
-    <div className='form'>
-    <h1>Add a New Book</h1>
+    <Modal
+      isOpen={isOpen}
+      onRequestClose={onClose}
+      contentLabel="Add Book"
+      className="modal"
+      overlayClassName="modal-overlay"
+    >
+      <button className="close-button" onClick={onClose}>&times;</button>
+      <div className="form">
+        <h1>Add a New Book</h1>
         <input
-      type="text"
-      placeholder="Book title"
-      name="title"
-      onChange={handleChange}
-    />
-    <textarea
-      rows={5}
-      type="text"
-      placeholder="Book desc"
-      name="desc"
-      onChange={handleChange}
-    />
-    <input
-      type="text"
-      placeholder="Book cover"
-      name="cover"
-      onChange={handleChange}
-    />
-    <button onClick={handleClick}>Add</button>
-    { error && <p>There was an error updating the book</p> }
-    <Link to="/"> Back to books</Link>
-        </div>
-  )
-}
+          type="text"
+          placeholder="Book title"
+          name="title"
+          onChange={handleChange}
+        />
+        <textarea
+          rows={5}
+          type="text"
+          placeholder="Book desc"
+          name="desc"
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          placeholder="Book cover"
+          name="cover"
+          onChange={handleChange}
+        />
+        <button onClick={handleClick}>Add</button>
+        {error && <p>There was an error adding the book</p>}
+      </div>
+    </Modal>
+  );
+};
