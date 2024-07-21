@@ -62,7 +62,7 @@ export const Add = ({ isOpen, onClose, onBookAdded }) => {
           name="cover"
           onChange={handleChange}
         />
-        <button onClick={handleClick}>Add</button>
+        <button className='modal-submit-button' onClick={handleClick}>Add</button>
         {error && <p>There was an error adding the book</p>}
       </div>
     </Modal>

@@ -71,7 +71,7 @@ export const Update = ({ isOpen, onClose, bookInfo, onBookUpdated }) => {
           name="cover"
           onChange={handleChange}
         />
-        <button onClick={handleClick}>Update</button>
+        <button className="modal-submit-button" onClick={handleClick}>Update</button>
         {error && <p>There was an error updating the book</p>}
       </div>
     </Modal>

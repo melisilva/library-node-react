@@ -64,7 +64,7 @@
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
-    background-color: #007bff;
+    background-color: #aa00ff;
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -73,7 +73,7 @@
   }
   
   .add-book-button:hover {
-    background-color: #0056b3;
+    background-color: #9526cd;
   }
   .form {
     background: #fff;
@@ -111,7 +111,7 @@
   .form button {
     width: 100%;
     padding: 10px;
-    background-color: #007bff;
+    background-color: #aa00ff;
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -120,7 +120,7 @@
   }
   
   .form button:hover {
-    background-color: #0056b3;
+    background-color: #9526cd;
   }
   
   .form p {
@@ -136,5 +136,42 @@
   
   .form a:hover {
     text-decoration: underline;
+  }
+  
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 500px;
+    max-width: 100%;
+    position: relative;
+  }
+  
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  .modal-submit-button{
+    color:#fff;
+    background-color: #aa00ff;
   }
   

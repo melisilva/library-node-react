@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Update } from './Update';
 import { Add } from './Add';
-import '../Modal.css'; // Import the CSS file
 
 export const Books = () => {
   const [books, setBooks] = useState([]);
