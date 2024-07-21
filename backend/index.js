@@ -3,12 +3,12 @@ const cors = require('cors'); //to allow cross-origin requests
 
 const app = express();
 app.use(express.json()); // allows us to parse incoming requests with JSON payloads
-app.use(cors({origin: true}));
+app.use(cors());
 
 const db = require('mysql').createConnection({
     host: "localhost",
     user: "root",
-    password: "Melissa_01",
+    password: "root123",
     database: "test"
 })
 
