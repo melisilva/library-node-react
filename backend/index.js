@@ -40,4 +40,30 @@ app.post("/books", (req, res) => {
     });
 });
 
+app.delete("/books/:id", (req, res) => {
+    const query = "DELETE FROM books WHERE id = ?";
+    const values = [req.params.id];
+
+    db.query(query, values, (err, result) => {
+        if(err) {
+            res.json({error: err});
+        } else {
+            res.json(result);
+        }
+    });
+});
+
+app.put("/books/:id", (req, res) => {
+    const query = "UPDATE books SET title = ?, `desc` = ?, cover = ? WHERE id = ?";
+    const values = [req.body.title, req.body.desc, req.body.cover, req.params.id];
+
+    db.query(query, values, (err, result) => {
+        if(err) {
+            res.json({error: err});
+        } else {
+            res.json(result);
+        }
+    });
+});
+
 app.listen(8000);
